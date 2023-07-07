@@ -35,8 +35,8 @@ resource "aws_globalaccelerator_listener" "this" {
   dynamic "port_range" {
     for_each = try(each.value.port_ranges, null) != null ? each.value.port_ranges : []
     content {
-      from_port = lookup(port_range.value, "from_port", null)
-      to_port   = lookup(port_range.value, "to_port", null)
+      from_port = lookup(port_ranges.value, "from_port", null)
+      to_port   = lookup(port_ranges.value, "to_port", null)
     }
   }
 
